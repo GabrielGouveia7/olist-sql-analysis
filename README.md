@@ -4,7 +4,7 @@ Sempre me interessei por entender o "porquê" por trás dos resultados: por que 
 
 A análise de dados me permite transformar essa curiosidade em respostas concretas e confiantes — sem achismos.
 
-O dataset da Olist foi escolhido por ser um dos mais completos e reconhecidos da comunidade brasileira de dados, cobrindo múltiplas dimensões de um negócio real: financeiro, logística, produto e experiência do cliente.
+O dataset da Olist foi escolhido por ser um dos mais completos e reconhecidos da comunidade brasileira de dados, cobrindo diversas dimensões de um negócio real: financeiro, logística, produto e experiência do cliente.
 
 Abaixo explico todos os processos e procedimentos realizados utilizando o dataset, desde a extração e tratamento dos dados brutos até a construção das análises e geração de insights.
 
@@ -37,7 +37,7 @@ Desenvolvido com SQL Server (SSMS) como parte da minha jornada de estudos.
 | product_category_name_translation | 71 |
 | geolocation | 1.000.163 |
 
-### Problemas encontrados e tratamentos aplicados
+### Problemas encontrados e tratamentos aplicados:
 
 Durante o processo de ETL, foram identificados e tratados os seguintes problemas:
 
@@ -52,25 +52,25 @@ Durante o processo de ETL, foram identificados e tratados os seguintes problemas
 
 ## 🎯 Perguntas Respondidas e Relevância para o Negócio
 
-**Variação mensal do faturamento**
+**Variação mensal do faturamento:**
 Acompanhar a evolução mês a mês permite identificar sazonalidade, validar o impacto de campanhas e antecipar períodos de maior demanda. Como a Olist atua como integrador entre lojistas e marketplaces, esse acompanhamento é essencial para orientar os vendedores parceiros sobre os melhores momentos para investir em visibilidade e estoque.
 
-**Estados com maior receita**
+**Estados com maior receita:**
 Direcionar campanhas regionais como frete grátis acima de determinado valor, descontos progressivos por volume ou cashback exclusivo para a região — tanto para atrair novos compradores quanto para aumentar o ticket médio onde a demanda já existe.
 
-**Categorias que geram mais receita**
+**Categorias que geram mais receita:**
 Priorizar essas categorias em campanhas sazonais (Black Friday, Natal, etc), negociar melhores condições com fornecedores do segmento e criar seções de destaque na plataforma. Também ajuda a identificar categorias com alto ticket médio mas baixo volume — oportunidade de crescimento com menor esforço operacional.
 
-**Performance de entrega por estado**
+**Performance de entrega por estado:**
 Entregas mais rápidas geram avaliações melhores, avaliações melhores aumentam a conversão de novos compradores e reduzem o custo de aquisição de clientes.
 
 **Categorias com menor satisfação**
 Categorias com alto índice de avaliações negativas aumentam o custo operacional com trocas, devoluções e SAC. Além disso, um cliente insatisfeito raramente retorna.
 
-**Índice de recompra**
+**Índice de recompra:**
 Com apenas 3.1% de clientes retornando, o custo de aquisição de novos clientes se torna insustentável no longo prazo. Identificar esse número é o primeiro passo para criar estratégias de fidelização — programa de pontos, cupons pós-compra e e-mail marketing segmentado.
 
-**Métodos de pagamento**
+**Métodos de pagamento:**
 Com 74% das transações no cartão de crédito e média de 3 parcelas, entender esse comportamento orienta decisões como oferecer parcelamento sem juros como diferencial competitivo ou criar condições especiais para pagamento à vista ou pix (que na época do dataset, ainda não era implementado).
 
 ---
