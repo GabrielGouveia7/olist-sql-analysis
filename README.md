@@ -1,20 +1,22 @@
-# 📦 Brazilian E-Commerce Analysis | SQL Server
-
-Projeto de análise de dados end-to-end utilizando SQL Server para explorar mais de 100 mil pedidos reais do e-commerce brasileiro.
-
-O objetivo foi investigar e transformar dados brutos em insights de negócio sobre receita, logística, retenção e satisfação do cliente.
-
-Desenvolvido com SQL Server (SSMS) como parte da minha jornada de estudos em Análise de Dados.
-
----
-
-## 💡 Motivação
+## 💡 Motivação do projeto
 
 Sempre me interessei por entender o "porquê" por trás dos resultados: por que pessoas escolhem determinado produto entre vários semelhantes, como chegamos a um resultado ao longo do tempo, como uma ação específica influenciou positiva ou negativamente um indicador.
 
 A análise de dados me permite transformar essa curiosidade em respostas concretas e confiantes — sem achismos.
 
 O dataset da Olist foi escolhido por ser um dos mais completos e reconhecidos da comunidade brasileira de dados, cobrindo múltiplas dimensões de um negócio real: financeiro, logística, produto e experiência do cliente.
+
+Abaixo explico todos os processos e procedimentos realizados utilizando o dataset, desde a extração e tratamento dos dados brutos até a construção das análises e geração de insights.
+
+---
+
+# 📦 Brazilian E-Commerce Analysis | SQL Server
+
+Projeto de análise de dados end-to-end utilizando SQL Server para explorar mais de 100 mil pedidos reais do e-commerce brasileiro.
+
+O objetivo foi investigar e transformar dados brutos em insights de negócio sobre receita, logística, retenção e satisfação do cliente.
+
+Desenvolvido com SQL Server (SSMS) como parte da minha jornada de estudos.
 
 ---
 
@@ -43,22 +45,21 @@ Durante o processo de ETL, foram identificados e tratados os seguintes problemas
 - Cabeçalho da tabela `product_category_name_translation` importado como registro — removido via `DELETE`
 - Colunas com nomes incorretos (`column1`, `column2`) na mesma tabela — renomeadas via `sp_rename`
 - 3 registros com `payment_type = 'not_defined'` — volume irrelevante, mantidos sem tratamento
-- Datas de entrega nulas em pedidos não finalizados — comportamento esperado, tratado com `IS NULL` nas queries
 - Gap de novembro/2016 sem nenhum pedido registrado — anomalia confirmada via query, documentada como limitação do dataset
-- Produtos sem tradução de categoria — tratados com `ISNULL` para fallback ao nome original em português
+- Produtos sem tradução de categoria — tratados com `ISNULL` como opção de contingência, retornando o nome original em português
 
 ---
 
 ## 🎯 Perguntas Respondidas e Relevância para o Negócio
 
 **Variação mensal do faturamento**
-Acompanhar a evolução mês a mês permite identificar sazonalidade, validar o impacto de campanhas e antecipar períodos de maior demanda. Como a Olist atua como superintegrador entre lojistas e marketplaces, esse acompanhamento é essencial para orientar os vendedores parceiros sobre os melhores momentos para investir em visibilidade e estoque.
+Acompanhar a evolução mês a mês permite identificar sazonalidade, validar o impacto de campanhas e antecipar períodos de maior demanda. Como a Olist atua como integrador entre lojistas e marketplaces, esse acompanhamento é essencial para orientar os vendedores parceiros sobre os melhores momentos para investir em visibilidade e estoque.
 
 **Estados com maior receita**
 Direcionar campanhas regionais como frete grátis acima de determinado valor, descontos progressivos por volume ou cashback exclusivo para a região — tanto para atrair novos compradores quanto para aumentar o ticket médio onde a demanda já existe.
 
 **Categorias que geram mais receita**
-Priorizar essas categorias em campanhas sazonais (Black Friday, Natal), negociar melhores condições com fornecedores do segmento e criar seções de destaque na plataforma. Também ajuda a identificar categorias com alto ticket médio mas baixo volume — oportunidade de crescimento com menor esforço operacional.
+Priorizar essas categorias em campanhas sazonais (Black Friday, Natal, etc), negociar melhores condições com fornecedores do segmento e criar seções de destaque na plataforma. Também ajuda a identificar categorias com alto ticket médio mas baixo volume — oportunidade de crescimento com menor esforço operacional.
 
 **Performance de entrega por estado**
 Entregas mais rápidas geram avaliações melhores, avaliações melhores aumentam a conversão de novos compradores e reduzem o custo de aquisição de clientes.
@@ -70,20 +71,20 @@ Categorias com alto índice de avaliações negativas aumentam o custo operacion
 Com apenas 3.1% de clientes retornando, o custo de aquisição de novos clientes se torna insustentável no longo prazo. Identificar esse número é o primeiro passo para criar estratégias de fidelização — programa de pontos, cupons pós-compra e e-mail marketing segmentado.
 
 **Métodos de pagamento**
-Com 74% das transações no cartão de crédito e média de 3 parcelas, entender esse comportamento orienta decisões como oferecer parcelamento sem juros como diferencial competitivo ou criar condições especiais para pagamento à vista via boleto.
+Com 74% das transações no cartão de crédito e média de 3 parcelas, entender esse comportamento orienta decisões como oferecer parcelamento sem juros como diferencial competitivo ou criar condições especiais para pagamento à vista ou pix (que na época do dataset, ainda não era implementado).
 
 ---
 
 ## 🔧 Processo
 
-O projeto seguiu um fluxo completo de análise de dados:
+O projeto seguiu o seguinte fluxo de análise:
 
 1. **Modelagem** — criação manual das tabelas com tipos de dados adequados e relacionamentos entre as 9 tabelas do dataset
 2. **ETL** — importação dos CSVs, identificação e correção de inconsistências nos dados (valores corrompidos, cabeçalhos importados como registros, gaps no dataset)
-3. **Exploração** — queries progressivas do básico ao avançado, respondendo perguntas de negócio reais sobre receita, logística, produto e comportamento do cliente
+3. **Exploração** — queries respondendo perguntas de negócio reais sobre receita, logística, produto e comportamento do cliente
 4. **Análise avançada** — Window Functions, CTEs encadeadas, subqueries correlacionadas e segmentação RFM de clientes
 
-Todo o processo foi rico em aprendizado — cada problema encontrado nos dados gerou uma decisão analítica real, o que tornou o projeto muito próximo do dia a dia de um analista de dados trabalhando com um negócio de verdade.
+Todo o processo foi rico em aprendizado — cada informação gerada a partir dos dados coletados gerou uma decisão analítica real, o que tornou o projeto muito próximo do nosso dia a dia.
 
 ---
 
@@ -92,7 +93,7 @@ Todo o processo foi rico em aprendizado — cada problema encontrado nos dados g
 | Métrica | Resultado |
 |---|---|
 | Faturamento total | ~R$ 16M |
-| Maior crescimento mensal | +53% em nov/2017 (Black Friday) |
+| Maior crescimento mensal | +53% em nov/2017 ( possivelmente no mês da Black Friday) |
 | Taxa de entrega antes do prazo | 89.1% |
 | Nota média — pedidos no prazo | 4.0 ⭐ |
 | Nota média — pedidos atrasados | 2.0 ⭐ |
@@ -102,9 +103,9 @@ Todo o processo foi rico em aprendizado — cada problema encontrado nos dados g
 | Categoria com maior receita | bed_bath_table |
 | Categoria com maior ticket médio | computers (~R$ 1.268) |
 
-**O que mais surpreendeu:**
+**Informações que me surpreenderam:**
 
-O baixo índice de recompra (3.1%) foi o resultado mais impactante — embora o período relativamente curto do dataset (2016–2018) possa influenciar esse número, ele ainda sinaliza um desafio real de fidelização de clientes.
+O baixo índice de recompra (3.1%) foi o resultado mais impactante — embora o período relativamente curto do dataset (2016 à 2018) possa influenciar esse número, ele ainda sinaliza um problema real de fidelização de clientes.
 
 Outro destaque foi a categoria de computadores: maior ticket médio do dataset (~R$ 1.268) combinado com um dos menores percentuais de avaliações negativas — um produto caro que entrega boa experiência ao cliente.
 
@@ -172,7 +173,7 @@ olist-sql-analysis/
 
 ## 👤 Autor
 
-**Gabriel**
+**Gabriel G. Machado**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gabriel-gouveia-machado/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/GabrielGouveia7)
