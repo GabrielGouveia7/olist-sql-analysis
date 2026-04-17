@@ -142,27 +142,13 @@ Outro destaque foi a categoria de computadores: maior ticket médio do dataset (
 ```
 olist-sql-analysis/
 │
-├── 01_etl/
-│   ├── 01_create_tables.sql
-│   └── 02_data_validation.sql
+├── 01_create_tables.sql         → Criação das tabelas
+├── 02_data_validation.sql       → Validação e limpeza dos dados
 │
-├── 02_basic/
-│   ├── 03_orders_by_status.sql
-│   ├── 04_payment_analysis.sql
-│   └── 05_customers_by_state.sql
-│
-├── 03_intermediate/
-│   ├── 06_revenue_by_state.sql
-│   ├── 07_top_categories.sql
-│   ├── 08_delivery_performance.sql
-│   └── 09_seller_classification.sql
-│
-├── 04_advanced/
-│   ├── 10_monthly_revenue_lag.sql
-│   ├── 11_top3_orders_by_state.sql
-│   ├── 12_product_quality.sql
-│   ├── 13_seller_performance.sql
-│   └── 14_rfm_analysis.sql
+├── analise_Financeiro.sql       → Faturamento, pagamentos e ticket médio
+├── analise_Pedidos&Logistica.sql → Pedidos, entregas e prazos
+├── analise_Categoria&Vendedores.sql → Categorias e desempenho de vendedores
+├── analise_Clientes.sql         → Clientes, recompra, avaliações e RFM
 │
 └── README.md
 ```
