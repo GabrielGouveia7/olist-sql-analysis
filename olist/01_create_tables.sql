@@ -1,6 +1,6 @@
 -- ============================================================
 -- OLIST E-COMMERCE ANALYSIS
--- 01_etl/01_create_tables.sql
+-- 01_create_tables.sql
 -- Criação do banco de dados e tabelas
 -- ============================================================
 
