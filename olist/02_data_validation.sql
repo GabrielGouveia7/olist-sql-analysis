@@ -1,6 +1,6 @@
 -- ============================================================
 -- OLIST E-COMMERCE ANALYSIS
--- 01_etl/02_data_validation.sql
+-- 02_data_validation.sql
 -- Validação, limpeza e correção dos dados importados
 -- ============================================================
 
@@ -52,7 +52,7 @@ UNION ALL
 SELECT 'geolocation',                             COUNT(*) FROM dbo.geolocation;
 
 -- ================================
--- Validação: anomalia nov/2016
+-- Validação: nov/2016
 -- (zero pedidos confirmado)
 -- ================================
 SELECT COUNT(*) AS total
