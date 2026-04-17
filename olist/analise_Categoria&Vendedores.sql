@@ -6,7 +6,7 @@
 
 
 -- ============================================================
--- 11. Faturamento por categoria
+-- Faturamento por categoria
 -- Traz ingl�s quando existe, portugu�s quando n�o tem tradu��o
 -- ============================================================
 SELECT 
